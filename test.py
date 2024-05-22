@@ -15,3 +15,17 @@ def load_data(nrows):
     data.rename(lowercase, axis='columns', inplace=True)
     data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
     return data
+
+
+# 텍스트 요소 생성. 사용자에게 데이터가 로드 되고 있음을 알린다.
+data_load_state = st.text('Loading data...')
+
+# 10000개의 행의 데이터를 로드한다.
+data = load_data(10000)
+
+# 데이터가 성공적으로 로드 되었음을 알린다.
+data_load_state.text('Loading data...done!')
+
+# 부제목 만들기
+st.subheader('Raw data')
+st.write(data)
